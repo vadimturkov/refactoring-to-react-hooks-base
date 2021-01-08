@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const DataFetching = ({ endpoint }) => {
-  const [data, setData] = useState([]);
+import { useFetch } from '../../hooks/useFetch';
 
-  useEffect(() => {
-    fetch(endpoint)
-      .then((response) => response.json())
-      .then((json) => setData(json));
-  }, [endpoint]);
+const DataFetching = ({ endpoint }) => {
+  const { data } = useFetch(endpoint);
 
   return (
     <ul>
