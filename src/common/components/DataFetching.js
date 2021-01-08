@@ -5,11 +5,17 @@ import { useFetch } from '../../hooks/useFetch';
 import Loading from './Loading';
 
 const DataFetching = ({ endpoint }) => {
-  const { isLoading, data } = useFetch(endpoint);
+  const { isLoading, error, data } = useFetch(endpoint);
 
-  return isLoading ? (
-    <Loading />
-  ) : (
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <p>Ops! Something went wrong: {error}</p>;
+  }
+
+  return (
     <ul>
       {data.map((element) => (
         <li key={element.timestamp}>
