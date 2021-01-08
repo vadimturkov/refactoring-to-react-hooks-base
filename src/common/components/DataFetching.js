@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { useFetch } from '../../hooks/useFetch';
+import Loading from './Loading';
 
 const DataFetching = ({ endpoint }) => {
-  const { data } = useFetch(endpoint);
+  const { isLoading, data } = useFetch(endpoint);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <ul>
       {data.map((element) => (
         <li key={element.timestamp}>
