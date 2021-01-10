@@ -7,19 +7,13 @@ import Main from '../../common/components/Main';
 import ChartContainer from './ChartContainer';
 import SummaryContainer from './SummaryContainer';
 
-const DashboardShell = () => {
+const DashboardShell = ({ fetchDataset }) => {
   const [selectedLabel, setSelectedLabel] = useState('');
 
-  // TODO: refactor in the next milestone
-  // componentDidMount() {
-  //   this.props.fetchDataset(`${process.env.REACT_APP_BASE_URL}/totals/`);
-  // }
-
   const handleSelectChange = (event) => {
+    fetchDataset(event.target.value);
     const selectedLabel = event.target.selectedOptions[0].label;
     setSelectedLabel(selectedLabel);
-    // TODO: refactor in the next milestone
-    // this.props.fetchDataset(event.target.value);
   };
 
   const optionsForSelect = [
