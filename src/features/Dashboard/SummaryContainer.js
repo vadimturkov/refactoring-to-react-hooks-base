@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import { globalContext } from '../../App';
+import { useFetch } from '../../hooks/useFetch';
 
 const SummaryContainer = () => {
-  const { salesTotal, subscriptionsTotal } = useContext(globalContext);
+  const {
+    data: { salesTotal, subscriptionsTotal },
+  } = useFetch(`${process.env.REACT_APP_BASE_URL}/totals/`);
 
   return (
     <div className='summary flex flex-row'>
@@ -18,11 +19,6 @@ const SummaryContainer = () => {
       </div>
     </div>
   );
-};
-
-SummaryContainer.propTypes = {
-  salesTotal: PropTypes.number.isRequired,
-  subscriptionsTotal: PropTypes.number.isRequired,
 };
 
 export default SummaryContainer;
