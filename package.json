@@ -34,8 +34,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react-hooks": "4.0.0",
     "miragejs": "^0.1.40",
     "prop-types": "^15.7.2",
+    "react-test-renderer": "17.0.1",
     "time-series-data-generator": "^0.1.5"
   }
 }
