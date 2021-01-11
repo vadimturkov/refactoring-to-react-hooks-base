@@ -8,7 +8,7 @@ const initialState = {
 
 function apiReducer(state, action) {
   switch (action.type) {
-    case 'FECTH_DATASET_START':
+    case 'FETCH_DATASET_START':
       return { ...state, isLoading: true };
     case 'FETCH_DATASET_ERROR':
       return { ...state, isLoading: false, error: action.payload };
